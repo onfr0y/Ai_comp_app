@@ -46,8 +46,10 @@ function HomePage() {
             onLetterAnimationComplete={() => handleAnimationComplete("farm......")}
           />
         </div>
-
-        <div className="absolute bottom-8 right-8 z-10">
+        
+           
+        <div className=" mx-7 mt-20 absolute bottom-5 right-5 z-8">
+          <div className='border-1 p-4 border-white/10 backdrop-blur-lg shadow-lg rounded-lg '>
           <div className="grid grid-cols-2 gap-4 sm:gap-5 max-w-xs sm:max-w-sm">
             {featuresData.map((feature) => (
               <FeatureCard
@@ -57,6 +59,10 @@ function HomePage() {
               />
             ))}
           </div>
+
+            
+          </div>
+        
         </div>
       </div>
     </>
@@ -64,3 +70,4 @@ function HomePage() {
 }
 
 export default HomePage;
+  
