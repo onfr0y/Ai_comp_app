@@ -47,22 +47,20 @@ function HomePage() {
           />
         </div>
         
-           
-        <div className=" mx-7 mt-20 absolute bottom-5 right-5 z-8">
-          <div className='border-1 p-4 border-white/10 backdrop-blur-lg shadow-lg rounded-lg '>
-          <div className="grid grid-cols-2 gap-4 sm:gap-5 max-w-xs sm:max-w-sm">
-            {featuresData.map((feature) => (
-              <FeatureCard
-                key={feature.id}
-                titleLines={feature.titleLines}
-                IconComponent={feature.Icon}
-              />
-            ))}
+        {/* Right Side: Feature Cards Section */}
+        <div className=" relative w-100 h-100 mt-60 mx-10 z-10 mt-8 mx-0 "> {/* Added mt-8 for some spacing from the text */}
+          {/* Glassmorphism container for the cards */}
+          <div className=' border-white/10 backdrop-blur-lg shadow-lg rounded-2xl p-10'>
+            <div className=" relative grid grid-cols-2 gap-4">
+              {featuresData.map((feature) => (
+                <FeatureCard
+                  key={feature.id}
+                  titleLines={feature.titleLines}
+                  IconComponent={feature.Icon}
+                />
+              ))}
+            </div>
           </div>
-
-            
-          </div>
-        
         </div>
       </div>
     </>
@@ -70,4 +68,3 @@ function HomePage() {
 }
 
 export default HomePage;
-  
