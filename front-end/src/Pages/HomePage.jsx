@@ -54,7 +54,7 @@ function HomePage() {
       </div>
 
       {/* Feature Cards Section */}
-      <div className=''>
+      <div className=' grid '>
       <div className="grid max-w-xs grid-cols-2 gap-4 sm:max-w-sm sm:gap-5">
           {featuresData.map((feature) => (
             <FeatureCard
