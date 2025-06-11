@@ -163,7 +163,6 @@ export default function App() {
 
   const commonTextStyle = "text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-2";
 
-  // Render the correct page based on the 'currentPage' state
   if (currentPage !== 'home') {
       return <PagePlaceholder title={pageTitle} onBack={() => navigateTo('home', '')} />;
   }
