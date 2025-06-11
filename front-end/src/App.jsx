@@ -1,26 +1,18 @@
 import React from 'react'
-
-
-
-
-
-
-
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // import the pages components
 import HomePage from './Pages/HomePage'
-
-
-
-
-
+import LLMPage from './Pages/HomePage' // Note: This should be imported from the correct file
 
 function App() {
   return (
-    <>
-      <HomePage />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ai" element={<LLMPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
