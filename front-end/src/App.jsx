@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // import the pages components
 import HomePage from './Pages/HomePage'
-import LLMPage from './Pages/HomePage' // Note: This should be imported from the correct file
+import LLMPage from './Pages/LLmPage' // Corrected import path
 
 function App() {
   return (

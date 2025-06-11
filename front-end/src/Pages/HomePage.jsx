@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // --- Icon Component ---
-// This SVG component is a stand-in for the original TreeDeciduous icon.
 const TreeDeciduous = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -68,25 +68,10 @@ const FeatureCard = ({ titleLines, IconComponent, onClick }) => (
   </div>
 );
 
-const PagePlaceholder = ({ title, onBack }) => (
-    <div className="relative font-sans bg-[url('https://i.pinimg.com/736x/14/02/f6/1402f637aa06ebb18eaa8a70524247a8.jpg')] bg-cover bg-center min-h-screen w-full flex flex-col items-center justify-center p-4 transition-opacity duration-500 animate-page-fade-in">
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="relative z-10 text-center text-white">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">{title}</h1>
-            <button
-                onClick={onBack}
-                className="bg-white/20 hover:bg-white/30 text-white font-bold py-3 px-8 rounded-lg backdrop-blur-md transition-all duration-300 ease-in-out transform hover:scale-105"
-            >
-                Back to Home
-            </button>
-        </div>
-    </div>
-);
-
-
 // --- HomePage Component ---
-// This is the main screen of the application.
-const HomePage = ({ onNavigate }) => {
+const HomePage = () => {
+  const navigate = useNavigate();
+
   const featuresData = [
     { id: 1, titleLines: ["WEATHER"], Icon: TreeDeciduous, page: 'weather', title: 'Weather Information' },
     { id: 2, titleLines: ["SALE", "PRICE"], Icon: TreeDeciduous, page: 'sales', title: 'Sale Price Analysis' },
@@ -94,6 +79,13 @@ const HomePage = ({ onNavigate }) => {
     { id: 4, titleLines: ["TALK", "W/ AI"], Icon: TreeDeciduous, page: 'ai', title: 'Talk with AI Assistant' },
   ];
   
+  const handleCardClick = (page) => {
+    if (page === 'ai') {
+      navigate('/ai');
+    }
+    // You can add else if blocks for other pages
+  };
+
   const getGreeting = () => {
     const hour = new Date().getHours();
     if (hour < 12) return "Good morning";
@@ -104,80 +96,8 @@ const HomePage = ({ onNavigate }) => {
   const commonTextStyle = "text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-2";
 
   return (
-    <div className="relative font-sans bg-[url('https://i.pinimg.com/736x/14/02/f6/1402f637aa06ebb18eaa8a70524247a8.jpg')] bg-cover bg-center min-h-screen w-full flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/40"></div>
-      <div className="relative z-10 container mx-auto flex flex-col items-start justify-center w-full max-w-md h-full p-4 sm:p-6">
-        <div className="flex flex-col w-full mb-10">
-          <SplitText text={getGreeting()} className={commonTextStyle} delay={50} />
-          <SplitText text="Let's talk about" className={commonTextStyle} delay={50} />
-          <SplitText text="your farm..." className={commonTextStyle} delay={80} />
-        </div>
-        <div className="w-full flex items-center justify-center">
-          <div className="grid grid-cols-2 gap-4 sm:gap-5">
-            {featuresData.map((feature) => (
-              <FeatureCard
-                key={feature.id}
-                titleLines={feature.titleLines}
-                IconComponent={feature.Icon}
-                onClick={() => onNavigate(feature.page, feature.title)}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// --- LLMPage Component ---
-// This is the new, separate page for the AI chat.
-// You can add your chat interface code here.
-const LLMPage = ({ onBack }) => {
-  return (
-    <div className="relative font-sans bg-gray-900 text-white min-h-screen w-full flex flex-col items-center justify-center p-4 transition-opacity duration-500 animate-page-fade-in">
-      <div className="absolute top-4 left-4">
-          <button
-              onClick={onBack}
-              className="bg-white/10 hover:bg-white/20 font-bold py-2 px-4 rounded-lg backdrop-blur-md transition-all duration-300 ease-in-out"
-          >
-              &larr; Back
-          </button>
-      </div>
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">AI Chat Page</h1>
-        <p className="text-lg text-gray-400">Your chat components will go here.</p>
-      </div>
-    </div>
-  );
-};
-
-
-// --- Main App Component (Acts as a Router) ---
-export default function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [pageTitle, setPageTitle] = useState('');
-
-  const handleNavigation = (page, title) => {
-    setPageTitle(title);
-    setCurrentPage(page);
-  };
-
-  
-  // Main routing logic
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'home':
-        return <HomePage onNavigate={handleNavigation} />;
-      case 'ai':
-        return <LLMPage onNavigate={() => handleNavigation('/ai')} />;
-      default:
-        return <PagePlaceholder title={pageTitle} onBack={() => handleNavigation('home')} />;
-    }
-  };
-
-  return (
     <>
-      <style>{`
+    <style>{`
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(20px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
@@ -193,7 +113,30 @@ export default function App() {
             animation: page-fade-in 0.5s ease-in-out forwards;
         }
       `}</style>
-      {renderPage()}
+    <div className="relative font-sans bg-[url('https://i.pinimg.com/736x/14/02/f6/1402f637aa06ebb18eaa8a70524247a8.jpg')] bg-cover bg-center min-h-screen w-full flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="relative z-10 container mx-auto flex flex-col items-start justify-center w-full max-w-md h-full p-4 sm:p-6">
+        <div className="flex flex-col w-full mb-10">
+          <SplitText text={getGreeting()} className={commonTextStyle} delay={50} />
+          <SplitText text="Let's talk about" className={commonTextStyle} delay={50} />
+          <SplitText text="your farm..." className={commonTextStyle} delay={80} />
+        </div>
+        <div className="w-full flex items-center justify-center">
+          <div className="grid grid-cols-2 gap-4 sm:gap-5">
+            {featuresData.map((feature) => (
+              <FeatureCard
+                key={feature.id}
+                titleLines={feature.titleLines}
+                IconComponent={feature.Icon}
+                onClick={() => handleCardClick(feature.page)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   );
-}
+};
+
+export default HomePage;
