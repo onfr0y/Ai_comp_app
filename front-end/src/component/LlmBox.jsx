@@ -57,7 +57,7 @@ function LlmBox() {
         throw new Error('Network response was not ok');
       }
 
-      const data = await response.json();
+      const data = await response.json();   c
       const aiMessage = { role: 'model', parts: data.generatedMessage }; // The backend returns a generatedMessage field
 
       // Add the AI's response to the history

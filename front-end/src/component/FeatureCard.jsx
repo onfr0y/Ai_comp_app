@@ -5,7 +5,7 @@ import { TreeDeciduous } from 'lucide-react'; // Example icon, install lucide-re
 const FeatureCard = ({ titleLines, IconComponent }) => {
   return (
 
-    <div className="group relative flex aspect-square w-90 py-7 cursor-pointer flex-col items-start justify-start overflow-hidden rounded-3xl border border-white/20 bg-gray-800/30 p-4 shadow-xl backdrop-blur-xl transition-colors duration-300 hover:bg-gray-700/40 sm:w-40 sm:p-5">
+    <div className="group relative flex aspect-square w-60 cursor-pointer flex-col items-start justify-start overflow-hidden rounded-3xl border border-white/20 bg-gray-800/30 p-4 shadow-xl backdrop-blur-xl transition-colors duration-300 hover:bg-gray-700/40 sm:w-40 sm:p-5">
     
       <div className="z-10">
         {titleLines.map((line, index) => (

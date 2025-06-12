@@ -6,7 +6,8 @@
   "main": "back-end/index.js",
   "scripts": {
     "start": "node back-end/index.js",
-    "dev": "nodemon back-end/index.js"
+    "dev": "nodemon back-end/index.js",
+     "build": "cd front-end && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
