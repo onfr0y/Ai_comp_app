@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import userPromptRouter from './Routes/UserPrompt.js';
 
 // Setup __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.send('test');
 });
+app.use('/api/UserPrompt', userPromptRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
