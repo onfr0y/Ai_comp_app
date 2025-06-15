@@ -8,7 +8,8 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
-import userPromptRouter from './Routes/UserPrompt.js';
+// import userPromptRouter from './Routes/UserPrompt.js'; // REMOVE THIS LINE
+import chatRouter from './Routes/Chat.js';
 
 // Setup __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.send('test');
 });
-app.use('/api/UserPrompt', userPromptRouter);
+// app.use('/api/UserPrompt', userPromptRouter); // REMOVE THIS LINE
+app.use('/api/chat', chatRouter); // Correctly use the chat router
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -40,7 +42,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-const PORT = process.env.PORT || 3001; // Change 3001 to another unused port if needed
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
