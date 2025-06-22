@@ -42,14 +42,14 @@ function LlmBox() {
 
     try {
       // API call to your backend chat endpoint
-      const response = await fetch('https://ai-backend-j9ga.onrender.com', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          history, // Send the previous history
-          newMessage: userMessage.parts, // Send the new user message
+          history,
+          newMessage: userMessage.parts,
         }),
       });
 
