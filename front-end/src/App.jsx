@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import the pages components
 import HomePage from './Pages/HomePage'
 import LLMPage from './Pages/LLmPage' // Corrected import path
-import WeatherPage from './Pages/WeatherPage'; // Import the new WeatherPage
+import WeatherPage from './Pages/WeatherPage.jsx'; // Import the new WeatherPage
 
 function App() {
   return (

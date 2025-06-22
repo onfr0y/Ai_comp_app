@@ -42,7 +42,7 @@ function LlmBox() {
 
     try {
       // API call to your backend chat endpoint
-      const response = await fetch('http://localhost:3001/api/chat', {
+      const response = await fetch('https://ai-backend-j9ga.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

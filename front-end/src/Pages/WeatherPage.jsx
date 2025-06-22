@@ -15,7 +15,7 @@ import {
 const WeatherPage = () => {
   const navigate = useNavigate();
 
-  // Placeholder data until you connect to a real weather API
+  //  placeholder until send it with the api jaa
   const dummyForecastData = [
     { day: 'Tuesday', Icon: CloudRain, temp: '71', low: '55' },
     { day: 'Wednesday', Icon: CloudLightning, temp: '68', low: '54' },
