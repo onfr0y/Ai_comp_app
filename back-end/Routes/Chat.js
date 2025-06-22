@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     
 
     //
-    const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || '';
+    const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://n8n-latest-i720.onrender.com/webhook-test/7a4dbf65-29c8-4ed5-868f-a61af82e9dc5';
 
     if (!N8N_WEBHOOK_URL) {
         console.error("N8N_WEBHOOK_URL is not set. Please check your .env file.");
